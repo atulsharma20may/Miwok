@@ -1,6 +1,7 @@
 package android.example.miwok;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,16 +11,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
     private static final String LOG_TAG = WordAdapter.class.getSimpleName();
-    int mResource;
+    private int mResourceLayout;
+    private int mColorResourceID;
 
-    WordAdapter(Activity context, int resource, ArrayList<Word> words) {
+    WordAdapter(Activity context, int resource, ArrayList<Word> words, int colorResourceID) {
         super(context, 0, words);
-        mResource = resource;
+        mResourceLayout = resource;
+        mColorResourceID = colorResourceID;
     }
 
     @NonNull
@@ -29,7 +33,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
         if(listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    this.mResource, parent, false);
+                    this.mResourceLayout, parent, false);
         }
 
         Word currentWord = getItem(position);
@@ -49,6 +53,11 @@ public class WordAdapter extends ArrayAdapter<Word> {
         else {
             imageView.setVisibility(View.GONE);
         }
+
+        View textContainer = listItemView.findViewById(R.id.text_container);
+//        Find the color that the resource ID maps to
+        int color = ContextCompat.getColor(getContext(), mColorResourceID);
+        textContainer.setBackgroundColor(color);
 
         return listItemView;
     }

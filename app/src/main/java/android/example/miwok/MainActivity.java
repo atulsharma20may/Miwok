@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView colors = findViewById(R.id.textView2);
+        TextView colors = findViewById(R.id.text_colors);
         colors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
