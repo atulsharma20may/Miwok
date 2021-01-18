@@ -13,9 +13,12 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
+    private static final String LOG_TAG = WordAdapter.class.getSimpleName();
+    int mResource;
 
-    WordAdapter(Activity context, ArrayList<Word> words) {
+    WordAdapter(Activity context, int resource, ArrayList<Word> words) {
         super(context, 0, words);
+        mResource = resource;
     }
 
     @NonNull
@@ -25,7 +28,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
 
         if(listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_item, parent, false);
+                    this.mResource, parent, false);
         }
 
         Word currentWord = getItem(position);
