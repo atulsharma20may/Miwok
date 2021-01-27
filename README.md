@@ -1,3 +1,3 @@
 # Miwok
 
-[apk for the App](https://github.com/atulsharma20may/Miwok/blob/master/app/build/outputs/apk/debug/app-debug.apk?raw=true)
+[apk for the App](https://github.com/atulsharma20may/Miwok/releases/download/v1/app-debug.apk)
